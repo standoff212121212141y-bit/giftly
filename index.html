@@ -1,25 +1,82 @@
-<!doctype html><n<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0d17"><title>Giftly Beta 0.2</title><link rel="stylesheet" href="style.css"><script src="https://telegram.org/js/telegram-web-app.js"></script></head><body>
-<div class="app">
-<header><a class="logo">✦ giftly <small>BETA 0.2</small></a><button id="openProfile" class="avatar">G</button></header>
-<section class="hero"><div class="eyebrow">DIGITAL GIFTS MARKET</div><h1>Дарить —<br><em>особенное.</em></h1><p>Открывай коллекции и находи подарки с характером.</p><button id="goCatalog" class="primary">Открыть каталог ↗</button><div class="hero-gift">🎁<i>✦</i></div></section>
-<button class="wallet-strip" id="openWallet"><span>◈ <small>ТЕСТОВЫЙ БАЛАНС<br><b>Мои средства</b></small></span><strong>⭐ 250&nbsp;&nbsp; ◆ 2.40 TON</strong><b>›</b></button>
-<section id="catalog"><div class="heading"><div><small>DISCOVER</small><h2>Популярные подарки</h2></div><button id="showAll">Все →</button></div>
-<label class="search">⌕ <input id="search" placeholder="Найти подарок или коллекцию..."></label>
-<div class="chips"><button class="chip active" data-cat="Все">Все</button><button class="chip" data-cat="Популярные">Популярные</button><button class="chip" data-cat="Редкие">Редкие</button><button class="chip" data-cat="Новые">Новые</button></div>
-<div class="grid" id="grid">
-<article class="gift" data-name="Plush Pepe" data-cat="Редкие" data-price="1200" data-emoji="🐸" data-desc="Коллекционная лягушка в мягком стиле."><div class="art pepe"><b>RARE</b><span>🐸</span>✦</div><div class="meta"><div><strong>Plush Pepe</strong><small>Retro collection</small></div><b>⭐ 1 200</b></div><button class="details">Посмотреть</button></article>
-<article class="gift" data-name="Vintage Hat" data-cat="Популярные" data-price="500" data-emoji="🎩" data-desc="Стильный подарок из винтажной серии."><div class="art vintage"><b>POPULAR</b><span>🎩</span>✧</div><div class="meta"><div><strong>Vintage Hat</strong><small>Old school</small></div><b>⭐ 500</b></div><button class="details">Посмотреть</button></article>
-<article class="gift" data-name="Berry Box" data-cat="Новые" data-price="250" data-emoji="🍓" data-desc="Яркая новинка из тестовой коллекции."><div class="art berry"><b>NEW</b><span>🍓</span>✦</div><div class="meta"><div><strong>Berry Box</strong><small>Sweet series</small></div><b>⭐ 250</b></div><button class="details">Посмотреть</button></article>
-<article class="gift" data-name="Crystal Star" data-cat="Популярные" data-price="750" data-emoji="🌟" data-desc="Сияющая звезда из тестовой серии."><div class="art star"><span>🌟</span>✧</div><div class="meta"><div><strong>Crystal Star</strong><small>Shine collection</small></div><b>⭐ 750</b></div><button class="details">Посмотреть</button></article>
-<article class="gift" data-name="Golden Rose" data-cat="Редкие" data-price="950" data-emoji="🌹" data-desc="Элегантная роза из условной редкой серии."><div class="art rose"><b>RARE</b><span>🌹</span>✦</div><div class="meta"><div><strong>Golden Rose</strong><small>Bloom series</small></div><b>⭐ 950</b></div><button class="details">Посмотреть</button></article>
-<article class="gift" data-name="Moon Bear" data-cat="Новые" data-price="320" data-emoji="🧸" data-desc="Милый мишка из новой тестовой серии."><div class="art bear"><b>NEW</b><span>🧸</span>✧</div><div class="meta"><div><strong>Moon Bear</strong><small>Dream collection</small></div><b>⭐ 320</b></div><button class="details">Посмотреть</button></article>
-</div><p id="empty" hidden>Ничего не найдено.</p></section>
-<section id="collections"><div class="heading"><div><small>CURATED FOR YOU</small><h2>Коллекции</h2></div></div><div class="collection">💎 <span><b>Редкие находки</b><small>Особенные предметы</small></span> ↗</div><div class="collection blue">🌙 <span><b>Ночная серия</b><small>Атмосфера и сияние</small></span> ↗</div></section>
-<section id="favorites" hidden><div class="heading"><div><small>YOUR PICKS</small><h2>Избранное</h2></div></div><div id="favList"></div></section>
-<section id="profile" hidden><div class="profile"><div class="big-avatar" id="bigAvatar">G</div><div><small>YOUR ACCOUNT</small><h2 id="profileName">Гость Giftly</h2><p>@giftly_user · Beta tester</p></div></div><div class="stats"><div><b id="favCount">0</b><small>Избранное</small></div><div><b>0</b><small>Покупок</small></div><div><b>β</b><small>Статус</small></div></div><button class="menurow" id="profileWallet">◈ <b>Мой баланс</b><small>⭐ 250 · 2.40 TON</small> ›</button><button class="menurow" id="profileFav">♡ <b>Избранное</b><small>Сохранённые подарки</small> ›</button><button class="menurow" id="about">ⓘ <b>О бета-версии</b><small>Giftly Beta 0.2</small> ›</button></section>
-</div>
-<nav><button class="tab active" data-tab="home">⌂<small>Главная</small></button><button class="tab" data-tab="favorites">♡<small>Избранное</small></button><button class="tab" data-tab="wallet">◈<small>Баланс</small></button><button class="tab" data-tab="profile">◎<small>Профиль</small></button></nav>
-<dialog id="giftModal"><button class="x" data-close>×</button><div class="modal-art" id="modalEmoji">🎁</div><small>GIFT DETAILS</small><h2 id="modalTitle">Подарок</h2><p id="modalDesc"></p><h3 id="modalPrice"></h3><button class="primary" id="toggleFav">♡ В избранное</button><p class="notice">Демо-режим: реальные покупки отключены.</p></dialog>
-<dialog id="walletModal"><button class="x" data-close>×</button><small>DEMO WALLET</small><h2>Мой баланс</h2><p>Тестовые значения интерфейса, не реальные средства.</p><div class="balances"><div>TELEGRAM STARS<b>⭐ 250</b></div><div>TON<b>◆ 2.40</b></div></div><button id="topup" class="walletbtn">＋ Пополнить (демо)</button><button id="transfer" class="walletbtn">↗ Перевод (демо)</button><p class="notice">Пополнение, переводы и вывод не выполняются. Не вводи seed-фразы или приватные ключи.</p></dialog>
-<dialog id="transferModal"><button class="x" data-close>×</button><small>TEST TRANSFER</small><h2>Демо-перевод TON</h2><form id="transferForm"><label>Получатель<input id="recipient" placeholder="@username" required></label><label>Сумма TON<input id="amount" type="number" min=".01" max="2.4" step=".01" placeholder=".10" required></label><button class="primary">Проверить перевод</button></form><p class="notice">Только тестовое подтверждение. Транзакция не отправляется.</p></dialog>
-<dialog id="infoModal"><button class="x" data-close>×</button><div class="modal-art">✦</div><h2>Giftly Beta 0.2</h2><p>Самостоятельный демонстрационный интерфейс, не связанный с GiftsPortals или Telegram Gifts Marketplace.</p><p class="notice">Эмодзи и балансы — примеры. Для настоящих подарков нужны официальные данные и интеграция.</p></dialog><div id="toast"></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c12">
+  <title>Giftly — Gifts Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">✦</span> giftly</a>
+    <div class="top-actions"><span class="online-dot"></span><span class="online-label">Портал подарков</span><button class="icon-btn" id="openProfile" aria-label="Профиль">♙</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="sparkle">✧</span> YOUR GIFT UNIVERSE</span>
+        <h1>Подарки, которые<br><span>говорят за тебя.</span></h1>
+        <p>Открывай коллекции, собирай редкие подарки и оформляй свой профиль.</p>
+        <button class="primary-btn" id="exploreBtn">Исследовать подарки <span>↗</span></button>
+      </div>
+      <div class="hero-art">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="hero-gift">🎁</div><span class="float-star star-a">✦</span><span class="float-star star-b">✧</span>
+        <div class="hero-chip">GIFTLY <b>✦</b></div>
+      </div>
+    </section>
+
+    <section class="profile-strip">
+      <div class="avatar-wrap"><img id="miniAvatar" alt="Аватар" src="https://images.unsplash.com/photo-1535713875002-d1d0cf37718e?w=160&h=160&fit=crop&crop=faces"></div>
+      <div class="profile-meta"><div class="name-line"><strong id="miniName">Giftly User</strong><span class="badge verified">✦ Creator</span></div><span id="miniHandle">@giftly_user · профиль</span></div>
+      <button class="ghost-btn" id="editProfile">Настроить профиль <span>→</span></button>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="section-head"><div><span class="eyebrow">DISCOVER</span><h2>Витрина подарков</h2></div><div class="search-wrap"><span>⌕</span><input id="search" placeholder="Найти подарок..."></div></div>
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="popular">Популярное</button><button class="filter" data-filter="rare">Редкие</button><button class="filter" data-filter="season">Сезонные</button>
+      </div>
+      <div class="gift-grid" id="giftGrid"></div>
+    </section>
+
+    <section class="lower-grid">
+      <article class="collection-panel">
+        <div class="panel-top"><div><span class="eyebrow">YOUR SPACE</span><h2>Моя коллекция</h2></div><span class="panel-icon">▧</span></div>
+        <p>Сохраняй понравившиеся подарки и собирай свою коллекцию.</p>
+        <div class="collection-preview"><span>🎀</span><span>🧸</span><span>💎</span><span class="collection-plus">+<b id="favCount">0</b></span></div>
+        <button class="text-btn" id="showFavorites">Открыть избранное →</button>
+      </article>
+      <article class="donate-panel">
+        <div class="donate-glow"></div><div class="panel-top"><div><span class="eyebrow">SUPPORT THE PROJECT</span><h2>Поддержать Giftly</h2></div><span class="star-coin">★</span></div>
+        <p>Помоги развитию портала — поддержка будет оформлена через Telegram Stars.</p>
+        <div class="donate-bottom"><div><strong>⭐ Telegram Stars</strong><small>Безопасная оплата через Telegram</small></div><button class="primary-btn small" id="donateBtn">Поддержать ↗</button></div>
+        <small class="demo-note" id="donateNote">Для реальных пожертвований нужно подключить бота и сервер.</small>
+      </article>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">✦</span> giftly</a><span>Подарки объединяют.</span><span>© 2026 Giftly</span></footer>
+
+  <div class="modal-backdrop" id="profileModal">
+    <div class="modal">
+      <button class="close-btn" data-close="profileModal">×</button>
+      <span class="eyebrow">PERSONALIZE</span><h2>Твой профиль</h2>
+      <div class="avatar-editor"><img id="avatarPreview" alt="Предпросмотр аватара" src="https://images.unsplash.com/photo-1535713875002-d1d0cf37718e?w=160&h=160&fit=crop&crop=faces"><label class="upload-btn">Изменить фото<input id="avatarFile" type="file" accept="image/*"></label></div>
+      <label class="field-label">Отображаемое имя<input id="nameInput" maxlength="24" placeholder="Например, Alex"></label>
+      <label class="field-label">Никнейм<input id="handleInput" maxlength="24" placeholder="@yourname"></label>
+      <label class="field-label">О себе<textarea id="bioInput" maxlength="100" placeholder="Пара слов о себе..."></textarea></label>
+      <div class="badge-choice"><span class="field-label">Значок профиля</span><div class="badge-options"><button data-badge="✦ Creator" class="badge-option selected">✦ Creator</button><button data-badge="◆ VIP" class="badge-option">◆ VIP</button><button data-badge="✓ Verified" class="badge-option">✓ Verified</button></div><small>Значки здесь демонстрационные и не подтверждают статус Telegram.</small></div>
+      <button class="primary-btn full" id="saveProfile">Сохранить профиль</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="giftModal"><div class="modal gift-detail"><button class="close-btn" data-close="giftModal">×</button><div id="giftDetailContent"></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

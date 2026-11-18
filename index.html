@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131d">
+  <title>Giftly — Beta</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>giftly</span><span class="beta">BETA</span></div>
+      <button class="avatar" aria-label="Профиль">U</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">TELEGRAM GIFTS</div>
+        <h1>Подарки,<br><span>которые радуют.</span></h1>
+        <p>Тестовый каталог цифровых подарков.</p>
+        <div class="hero-glow">🎁</div>
+      </section>
+
+      <section class="stats">
+        <div><strong>24</strong><span>подарка</span></div>
+        <div><strong>8</strong><span>коллекций</span></div>
+        <div><strong>β</strong><span>режим теста</span></div>
+      </section>
+
+      <section class="section-head">
+        <div><h2>Каталог</h2><p>Выбери что-нибудь особенное</p></div>
+        <button class="filter" id="filterBtn">Фильтр <span>☷</span></button>
+      </section>
+
+      <div class="chips" id="chips">
+        <button class="chip active" data-category="Все">Все</button>
+        <button class="chip" data-category="Редкие">Редкие</button>
+        <button class="chip" data-category="Популярные">Популярные</button>
+        <button class="chip" data-category="Новые">Новые</button>
+      </div>
+
+      <section class="grid" id="giftGrid" aria-live="polite">
+        <article class="gift-card" data-category="Популярные">
+          <div class="gift-art art-rose">🌹<span class="tag">ХИТ</span></div>
+          <div class="gift-info"><div><h3>Роза</h3><p>Классическая коллекция</p></div><strong>15 ⭐</strong></div>
+          <button class="details" data-gift="Роза">Подробнее</button>
+        </article>
+        <article class="gift-card" data-category="Редкие">
+          <div class="gift-art art-cake">🎂<span class="tag rare">РЕДКИЙ</span></div>
+          <div class="gift-info"><div><h3>Торт</h3><p>Праздничная серия</p></div><strong>50 ⭐</strong></div>
+          <button class="details" data-gift="Торт">Подробнее</button>
+        </article>
+        <article class="gift-card" data-category="Новые">
+          <div class="gift-art art-bear">🧸<span class="tag new">НОВИНКА</span></div>
+          <div class="gift-info"><div><h3>Мишка</h3><p>Мягкая коллекция</p></div><strong>25 ⭐</strong></div>
+          <button class="details" data-gift="Мишка">Подробнее</button>
+        </article>
+        <article class="gift-card" data-category="Популярные">
+          <div class="gift-art art-star">🌟</div>
+          <div class="gift-info"><div><h3>Звезда</h3><p>Сияющая серия</p></div><strong>20 ⭐</strong></div>
+          <button class="details" data-gift="Звезда">Подробнее</button>
+        </article>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item selected"><span>⌂</span>Главная</button>
+      <button class="nav-item" id="favNav"><span>♡</span>Избранное</button>
+      <button class="nav-item" id="profileNav"><span>◉</span>Профиль</button>
+    </nav>
+  </div>
+
+  <dialog id="giftDialog">
+    <div class="dialog-content">
+      <button class="close" id="closeDialog">×</button>
+      <div class="dialog-icon">🎁</div>
+      <h2 id="dialogTitle">Подарок</h2>
+      <p>Это демонстрационная карточка бета-версии. Покупки пока отключены.</p>
+      <button class="primary" id="favoriteBtn">♡ В избранное</button>
+    </div>
+  </dialog>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

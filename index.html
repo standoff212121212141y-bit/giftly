@@ -1,87 +1,25 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10131d">
-  <title>Giftly — Beta</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-</head>
-<body>
-  <div class="shell">
-    <header class="topbar">
-      <div class="brand"><span class="brand-mark">✦</span><span>giftly</span><span class="beta">BETA</span></div>
-      <button class="avatar" aria-label="Профиль">U</button>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="eyebrow">TELEGRAM GIFTS</div>
-        <h1>Подарки,<br><span>которые радуют.</span></h1>
-        <p>Тестовый каталог цифровых подарков.</p>
-        <div class="hero-glow">🎁</div>
-      </section>
-
-      <section class="stats">
-        <div><strong>24</strong><span>подарка</span></div>
-        <div><strong>8</strong><span>коллекций</span></div>
-        <div><strong>β</strong><span>режим теста</span></div>
-      </section>
-
-      <section class="section-head">
-        <div><h2>Каталог</h2><p>Выбери что-нибудь особенное</p></div>
-        <button class="filter" id="filterBtn">Фильтр <span>☷</span></button>
-      </section>
-
-      <div class="chips" id="chips">
-        <button class="chip active" data-category="Все">Все</button>
-        <button class="chip" data-category="Редкие">Редкие</button>
-        <button class="chip" data-category="Популярные">Популярные</button>
-        <button class="chip" data-category="Новые">Новые</button>
-      </div>
-
-      <section class="grid" id="giftGrid" aria-live="polite">
-        <article class="gift-card" data-category="Популярные">
-          <div class="gift-art art-rose">🌹<span class="tag">ХИТ</span></div>
-          <div class="gift-info"><div><h3>Роза</h3><p>Классическая коллекция</p></div><strong>15 ⭐</strong></div>
-          <button class="details" data-gift="Роза">Подробнее</button>
-        </article>
-        <article class="gift-card" data-category="Редкие">
-          <div class="gift-art art-cake">🎂<span class="tag rare">РЕДКИЙ</span></div>
-          <div class="gift-info"><div><h3>Торт</h3><p>Праздничная серия</p></div><strong>50 ⭐</strong></div>
-          <button class="details" data-gift="Торт">Подробнее</button>
-        </article>
-        <article class="gift-card" data-category="Новые">
-          <div class="gift-art art-bear">🧸<span class="tag new">НОВИНКА</span></div>
-          <div class="gift-info"><div><h3>Мишка</h3><p>Мягкая коллекция</p></div><strong>25 ⭐</strong></div>
-          <button class="details" data-gift="Мишка">Подробнее</button>
-        </article>
-        <article class="gift-card" data-category="Популярные">
-          <div class="gift-art art-star">🌟</div>
-          <div class="gift-info"><div><h3>Звезда</h3><p>Сияющая серия</p></div><strong>20 ⭐</strong></div>
-          <button class="details" data-gift="Звезда">Подробнее</button>
-        </article>
-      </section>
-    </main>
-
-    <nav class="bottom-nav">
-      <button class="nav-item selected"><span>⌂</span>Главная</button>
-      <button class="nav-item" id="favNav"><span>♡</span>Избранное</button>
-      <button class="nav-item" id="profileNav"><span>◉</span>Профиль</button>
-    </nav>
-  </div>
-
-  <dialog id="giftDialog">
-    <div class="dialog-content">
-      <button class="close" id="closeDialog">×</button>
-      <div class="dialog-icon">🎁</div>
-      <h2 id="dialogTitle">Подарок</h2>
-      <p>Это демонстрационная карточка бета-версии. Покупки пока отключены.</p>
-      <button class="primary" id="favoriteBtn">♡ В избранное</button>
-    </div>
-  </dialog>
-  <div class="toast" id="toast"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html><n<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0d17"><title>Giftly Beta 0.2</title><link rel="stylesheet" href="style.css"><script src="https://telegram.org/js/telegram-web-app.js"></script></head><body>
+<div class="app">
+<header><a class="logo">✦ giftly <small>BETA 0.2</small></a><button id="openProfile" class="avatar">G</button></header>
+<section class="hero"><div class="eyebrow">DIGITAL GIFTS MARKET</div><h1>Дарить —<br><em>особенное.</em></h1><p>Открывай коллекции и находи подарки с характером.</p><button id="goCatalog" class="primary">Открыть каталог ↗</button><div class="hero-gift">🎁<i>✦</i></div></section>
+<button class="wallet-strip" id="openWallet"><span>◈ <small>ТЕСТОВЫЙ БАЛАНС<br><b>Мои средства</b></small></span><strong>⭐ 250&nbsp;&nbsp; ◆ 2.40 TON</strong><b>›</b></button>
+<section id="catalog"><div class="heading"><div><small>DISCOVER</small><h2>Популярные подарки</h2></div><button id="showAll">Все →</button></div>
+<label class="search">⌕ <input id="search" placeholder="Найти подарок или коллекцию..."></label>
+<div class="chips"><button class="chip active" data-cat="Все">Все</button><button class="chip" data-cat="Популярные">Популярные</button><button class="chip" data-cat="Редкие">Редкие</button><button class="chip" data-cat="Новые">Новые</button></div>
+<div class="grid" id="grid">
+<article class="gift" data-name="Plush Pepe" data-cat="Редкие" data-price="1200" data-emoji="🐸" data-desc="Коллекционная лягушка в мягком стиле."><div class="art pepe"><b>RARE</b><span>🐸</span>✦</div><div class="meta"><div><strong>Plush Pepe</strong><small>Retro collection</small></div><b>⭐ 1 200</b></div><button class="details">Посмотреть</button></article>
+<article class="gift" data-name="Vintage Hat" data-cat="Популярные" data-price="500" data-emoji="🎩" data-desc="Стильный подарок из винтажной серии."><div class="art vintage"><b>POPULAR</b><span>🎩</span>✧</div><div class="meta"><div><strong>Vintage Hat</strong><small>Old school</small></div><b>⭐ 500</b></div><button class="details">Посмотреть</button></article>
+<article class="gift" data-name="Berry Box" data-cat="Новые" data-price="250" data-emoji="🍓" data-desc="Яркая новинка из тестовой коллекции."><div class="art berry"><b>NEW</b><span>🍓</span>✦</div><div class="meta"><div><strong>Berry Box</strong><small>Sweet series</small></div><b>⭐ 250</b></div><button class="details">Посмотреть</button></article>
+<article class="gift" data-name="Crystal Star" data-cat="Популярные" data-price="750" data-emoji="🌟" data-desc="Сияющая звезда из тестовой серии."><div class="art star"><span>🌟</span>✧</div><div class="meta"><div><strong>Crystal Star</strong><small>Shine collection</small></div><b>⭐ 750</b></div><button class="details">Посмотреть</button></article>
+<article class="gift" data-name="Golden Rose" data-cat="Редкие" data-price="950" data-emoji="🌹" data-desc="Элегантная роза из условной редкой серии."><div class="art rose"><b>RARE</b><span>🌹</span>✦</div><div class="meta"><div><strong>Golden Rose</strong><small>Bloom series</small></div><b>⭐ 950</b></div><button class="details">Посмотреть</button></article>
+<article class="gift" data-name="Moon Bear" data-cat="Новые" data-price="320" data-emoji="🧸" data-desc="Милый мишка из новой тестовой серии."><div class="art bear"><b>NEW</b><span>🧸</span>✧</div><div class="meta"><div><strong>Moon Bear</strong><small>Dream collection</small></div><b>⭐ 320</b></div><button class="details">Посмотреть</button></article>
+</div><p id="empty" hidden>Ничего не найдено.</p></section>
+<section id="collections"><div class="heading"><div><small>CURATED FOR YOU</small><h2>Коллекции</h2></div></div><div class="collection">💎 <span><b>Редкие находки</b><small>Особенные предметы</small></span> ↗</div><div class="collection blue">🌙 <span><b>Ночная серия</b><small>Атмосфера и сияние</small></span> ↗</div></section>
+<section id="favorites" hidden><div class="heading"><div><small>YOUR PICKS</small><h2>Избранное</h2></div></div><div id="favList"></div></section>
+<section id="profile" hidden><div class="profile"><div class="big-avatar" id="bigAvatar">G</div><div><small>YOUR ACCOUNT</small><h2 id="profileName">Гость Giftly</h2><p>@giftly_user · Beta tester</p></div></div><div class="stats"><div><b id="favCount">0</b><small>Избранное</small></div><div><b>0</b><small>Покупок</small></div><div><b>β</b><small>Статус</small></div></div><button class="menurow" id="profileWallet">◈ <b>Мой баланс</b><small>⭐ 250 · 2.40 TON</small> ›</button><button class="menurow" id="profileFav">♡ <b>Избранное</b><small>Сохранённые подарки</small> ›</button><button class="menurow" id="about">ⓘ <b>О бета-версии</b><small>Giftly Beta 0.2</small> ›</button></section>
+</div>
+<nav><button class="tab active" data-tab="home">⌂<small>Главная</small></button><button class="tab" data-tab="favorites">♡<small>Избранное</small></button><button class="tab" data-tab="wallet">◈<small>Баланс</small></button><button class="tab" data-tab="profile">◎<small>Профиль</small></button></nav>
+<dialog id="giftModal"><button class="x" data-close>×</button><div class="modal-art" id="modalEmoji">🎁</div><small>GIFT DETAILS</small><h2 id="modalTitle">Подарок</h2><p id="modalDesc"></p><h3 id="modalPrice"></h3><button class="primary" id="toggleFav">♡ В избранное</button><p class="notice">Демо-режим: реальные покупки отключены.</p></dialog>
+<dialog id="walletModal"><button class="x" data-close>×</button><small>DEMO WALLET</small><h2>Мой баланс</h2><p>Тестовые значения интерфейса, не реальные средства.</p><div class="balances"><div>TELEGRAM STARS<b>⭐ 250</b></div><div>TON<b>◆ 2.40</b></div></div><button id="topup" class="walletbtn">＋ Пополнить (демо)</button><button id="transfer" class="walletbtn">↗ Перевод (демо)</button><p class="notice">Пополнение, переводы и вывод не выполняются. Не вводи seed-фразы или приватные ключи.</p></dialog>
+<dialog id="transferModal"><button class="x" data-close>×</button><small>TEST TRANSFER</small><h2>Демо-перевод TON</h2><form id="transferForm"><label>Получатель<input id="recipient" placeholder="@username" required></label><label>Сумма TON<input id="amount" type="number" min=".01" max="2.4" step=".01" placeholder=".10" required></label><button class="primary">Проверить перевод</button></form><p class="notice">Только тестовое подтверждение. Транзакция не отправляется.</p></dialog>
+<dialog id="infoModal"><button class="x" data-close>×</button><div class="modal-art">✦</div><h2>Giftly Beta 0.2</h2><p>Самостоятельный демонстрационный интерфейс, не связанный с GiftsPortals или Telegram Gifts Marketplace.</p><p class="notice">Эмодзи и балансы — примеры. Для настоящих подарков нужны официальные данные и интеграция.</p></dialog><div id="toast"></div><script src="app.js"></script></body></html>

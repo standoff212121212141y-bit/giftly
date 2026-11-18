@@ -1,52 +1,10 @@
-const tg = window.Telegram?.WebApp;
-if (tg) { tg.ready(); tg.expand(); }
-
-const dialog = document.getElementById('giftDialog');
-const title = document.getElementById('dialogTitle');
-const toast = document.getElementById('toast');
-let currentGift = '';
-const favorites = new Set();
-
-function showToast(message) {
-  toast.textContent = message;
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 1800);
-}
-
-document.querySelectorAll('.details').forEach(button => {
-  button.addEventListener('click', () => {
-    currentGift = button.dataset.gift;
-    title.textContent = currentGift;
-    document.getElementById('favoriteBtn').textContent =
-      favorites.has(currentGift) ? '♥ В избранном' : '♡ В избранное';
-    dialog.showModal();
-  });
-});
-
-document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
-document.getElementById('favoriteBtn').addEventListener('click', () => {
-  if (favorites.has(currentGift)) {
-    favorites.delete(currentGift);
-    showToast('Удалено из избранного');
-  } else {
-    favorites.add(currentGift);
-    showToast('Добавлено в избранное');
-  }
-  document.getElementById('favoriteBtn').textContent =
-    favorites.has(currentGift) ? '♥ В избранном' : '♡ В избранное';
-});
-
-document.querySelectorAll('.chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.chip').forEach(item => item.classList.remove('active'));
-    chip.classList.add('active');
-    const category = chip.dataset.category;
-    document.querySelectorAll('.gift-card').forEach(card => {
-      card.hidden = category !== 'Все' && card.dataset.category !== category;
-    });
-  });
-});
-
-document.getElementById('filterBtn').addEventListener('click', () => showToast('Фильтры появятся в следующей версии'));
-document.getElementById('favNav').addEventListener('click', () => showToast(`В избранном: ${favorites.size}`));
-document.getElementById('profileNav').addEventListener('click', () => showToast('Профиль появится в следующей версии'));
+const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand()}const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let selected=null;const fav=new Set();const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),1900)};const dialogs=['giftModal','walletModal','transferModal','infoModal'].map(x=>$('#'+x));$$('[data-close],.x').forEach(b=>b.addEventListener('click',()=>dialogs.forEach(d=>d.close())));
+function refreshFav(){ $('#favCount').textContent=fav.size;$('#favList').innerHTML='';if(!fav.size){$('#favList').textContent='Пока пусто — добавь подарок в избранное.';return}fav.forEach(n=>{const c=$$('.gift').find(x=>x.dataset.name===n);const d=document.createElement('p');d.textContent=c.dataset.emoji+'  '+n+' · ⭐ '+c.dataset.price;$('#favList').append(d)})}
+function openGift(c){selected=c;$('#modalEmoji').textContent=c.dataset.emoji;$('#modalTitle').textContent=c.dataset.name;$('#modalDesc').textContent=c.dataset.desc;$('#modalPrice').textContent='⭐ '+Number(c.dataset.price).toLocaleString('ru-RU');$('#toggleFav').textContent=fav.has(c.dataset.name)?'♥ В избранном':'♡ В избранное';$('#giftModal').showModal()}
+$$('.gift').forEach(c=>c.querySelector('.details').onclick=()=>openGift(c));$('#toggleFav').onclick=()=>{const n=selected.dataset.name;fav.has(n)?fav.delete(n):fav.add(n);$('#toggleFav').textContent=fav.has(n)?'♥ В избранном':'♡ В избранное';refreshFav();toast(fav.has(n)?'Добавлено в избранное':'Удалено из избранного')};
+function filter(){let q=$('#search').value.toLowerCase(),cat=$('.chip.active').dataset.cat,count=0;$$('.gift').forEach(c=>{let ok=(c.dataset.name+' '+c.dataset.desc).toLowerCase().includes(q)&&(cat==='Все'||c.dataset.cat===cat);c.hidden=!ok;if(ok)count++});$('#empty').hidden=count>0}
+$('#search').oninput=filter;$$('.chip').forEach(b=>b.onclick=()=>{$$('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter()});$('#showAll').onclick=()=>{$('.chip[data-cat="Все"]').click();$('#search').value='';filter()};$('#goCatalog').onclick=()=>$('#catalog').scrollIntoView({behavior:'smooth'});
+function tab(t){$('#catalog').hidden=t!=='home';$('#collections').hidden=t!=='home';$('#favorites').hidden=t!=='favorites';$('#profile').hidden=t!=='profile';$$('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));if(t==='favorites')refreshFav();if(t==='profile')refreshFav();if(t==='wallet')$('#walletModal').showModal()}
+$$('.tab').forEach(b=>b.onclick=()=>tab(b.dataset.tab));$('#openProfile').onclick=()=>tab('profile');$('#openWallet').onclick=()=>$('#walletModal').showModal();$('#profileWallet').onclick=()=>$('#walletModal').showModal();$('#profileFav').onclick=()=>tab('favorites');$('#about').onclick=()=>$('#infoModal').showModal();$('#topup').onclick=()=>toast('Демо: пополнение не выполняется');$('#transfer').onclick=()=>{$('#walletModal').close();$('#transferModal').showModal()};
+$('#transferForm').onsubmit=e=>{e.preventDefault();let r=$('#recipient').value.trim(),a=Number($('#amount').value);if(!r.startsWith('@')||a<=0||a>2.4){toast('Проверь ник и сумму (макс. 2.40 TON)');return}$('#transferModal').close();e.target.reset();toast('Тест пройден. Перевод не отправлен.')};
+if(tg?.initDataUnsafe?.user){let n=tg.initDataUnsafe.user.first_name||'Пользователь';$('#profileName').textContent=n;$('#openProfile').textContent=n[0].toUpperCase();$('#bigAvatar').textContent=n[0].toUpperCase()}refreshFav();
